@@ -10,6 +10,23 @@ function generatePassword () {
   return getPassword(characters, passwordLength);
 }
 
+function getPassword(type, length) {
+  var characterList = normalCharacters;
+  var result = "";
+
+  if (type == 2) {
+    characterList += numberCharacters;
+  } else if (type == 3) {
+    characterList += numberCharacters + specialCharacters;
+  }
+  while (length > 0) {
+    var index = Math.floor(Math.random() * characterList.length);
+    result += characterList[index];
+    length--;
+  }
+  return result;
+}
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
