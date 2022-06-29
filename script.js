@@ -4,8 +4,8 @@ const capitalCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const numberCharacters = "012345789";
 const specialCharacters = "!@#$%^&*";
 
-// This will be used to prompt the user on how they would like their password 
-// generated and run the getPassword function to return a random password to the users specifications
+// This will be used to prompt the user on how they would like their password generated
+// and run the function to return a random password to the users specifications
 function generatePassword () {
 
   var characterList = "";
@@ -13,6 +13,7 @@ function generatePassword () {
 
   length = getPromptBetween(8, 128, "How many characters would you like? Choose a number between 8 and 128.");
 
+  // Ask user to confirm character types for their password: if true, add character types to list
   if (confirm("Include lowercase characters?") == true) {
     characterList += lowerCharacters;
   } if (confirm("Include uppercase characters?") == true) {
@@ -23,6 +24,7 @@ function generatePassword () {
     characterList += specialCharacters;
   }
 
+  // Iterate through character list 
   while (length > 0) {
     var index = Math.floor(Math.random() * characterList.length);
     result += characterList[index];
@@ -32,6 +34,7 @@ function generatePassword () {
   return result;
 }
 
+// Prompt the user for a number between min and max
 function getPromptBetween(min, max, userPropmt){
   let input = prompt(userPropmt);
 
