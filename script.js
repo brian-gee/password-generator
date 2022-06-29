@@ -39,7 +39,7 @@ function getPromptBetween(min, max, userPropmt){
   let input = prompt(userPropmt);
 
   while (input < min || input > max) {
-    alert("Enter a number between" + min + " and " + max);
+    alert("Enter a number between " + min + " and " + max + ".");
     input = prompt(userPropmt);
   }
 
