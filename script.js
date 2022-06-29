@@ -7,25 +7,20 @@ const specialCharacters = "!@#$%^&*";
 // This will be used to prompt the user on how they would like their password 
 // generated and run the getPassword function to return a random password to the users specifications
 function generatePassword () {
-  characters = getPromptBetween(1, 4, "Which characters would you like your password to include?\n 1 = Lowercase letters only (a-z)\n2 = Uppercase and lowercase letters (a-z, A-Z)\n3 = Letters and numbers (a-z, A-Z, 1-0)\n4 = Letters, numbers, and special characters (A-Z+1-0+@#!$)");
 
-  passwordLength = getPromptBetween(8, 128, "How many characters would you like? Choose a number between 8 and 128.");
-
-  return getPassword(characters, passwordLength);
-}
-
-function getPassword(type, length) {
   var characterList = "";
   var result = "";
 
-  if (type == 1) {
+  length = getPromptBetween(8, 128, "How many characters would you like? Choose a number between 8 and 128.");
+
+  if (confirm("Include lowercase characters?") == true) {
     characterList += lowerCharacters;
-  } else if (type == 2) {
-    characterList += lowerCharacters + capitalCharacters;
-  } else if (type == 3) {
-    characterList += lowerCharacters + capitalCharacters + numberCharacters;
-  } else if (type == 4) {
-    characterList += lowerCharacters + capitalCharacters + numberCharacters + specialCharacters;
+  } if (confirm("Include uppercase characters?") == true) {
+    characterList += capitalCharacters;
+  } if (confirm("Include numerical characters?") == true) {
+    characterList += numberCharacters;
+  } if (confirm("Include special characters?") == true) {
+    characterList += specialCharacters;
   }
 
   while (length > 0) {
