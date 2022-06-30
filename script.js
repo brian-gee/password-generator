@@ -38,7 +38,6 @@ function generatePassword () {
     result += characterList[index];
     length--;
   }
-
   return result;
 }
 
