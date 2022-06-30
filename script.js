@@ -13,11 +13,12 @@ function generatePassword () {
 
   length = getPromptBetween(8, 128, "How many characters would you like? Choose a number between 8 and 128.");
 
-  // Ask user to confirm character types for their password: if true, add character types to list
+  // Ask user to confirm character types for their password: if true, add character types to list. If all options false then add all types
   var includeLowercase = confirm("Include lowercase characters?");
   var includeUppercase = confirm("Include uppercase characters?");
   var includeNumbers = confirm("Include numerical characters?");
   var includeSpecial = confirm("Include special characters?");
+
 
   if (includeLowercase) {
     characterList += lowerCharacters;
