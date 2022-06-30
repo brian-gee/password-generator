@@ -14,17 +14,24 @@ function generatePassword () {
   length = getPromptBetween(8, 128, "How many characters would you like? Choose a number between 8 and 128.");
 
   // Ask user to confirm character types for their password: if true, add character types to list
-  if (confirm("Include lowercase characters?") == true) {
+  var includeLowercase = confirm("Include lowercase characters?");
+  var includeUppercase = confirm("Include uppercase characters?");
+  var includeNumbers = confirm("Include numerical characters?");
+  var includeSpecial = confirm("Include special characters?");
+
+  if (includeLowercase) {
     characterList += lowerCharacters;
-  } if (confirm("Include uppercase characters?") == true) {
+  } if (includeUppercase) {
     characterList += capitalCharacters;
-  } if (confirm("Include numerical characters?") == true) {
+  } if (includeNumbers) {
     characterList += numberCharacters;
-  } if (confirm("Include special characters?") == true) {
+  } if (includeSpecial) {
     characterList += specialCharacters;
+  } else if (includeLowercase == false && includeUppercase == false && includeNumbers == false && includeSpecial == false) {
+    characterList += lowerCharacters + capitalCharacters + numberCharacters + specialCharacters;
   }
 
-  // Iterate through character list 
+  // Iterate through character list to create random password
   while (length > 0) {
     var index = Math.floor(Math.random() * characterList.length);
     result += characterList[index];
